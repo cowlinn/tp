@@ -11,11 +11,11 @@ import seedu.address.model.Model;
 import seedu.address.model.client.Client;
 
 /**
- * eletes a client identified using it's displayed index from the address book.
+ * Deletes a client identified using it's displayed index from the address book.
  */
 public class DeleteClientCommand extends Command {
 
-    public static final String COMMAND_WORD = "removeClient"; //TODO: Change back to delete
+    public static final String COMMAND_WORD = "remove"; //TODO: Change back to delete
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the client identified by the index number used in the displayed client list.\n"

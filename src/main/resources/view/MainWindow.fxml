@@ -36,8 +36,12 @@
         </StackPane>
 
 
-        <VBox fx:id="personList" minWidth="340" prefWidth="340" style="-fx-background-color: white;" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-          <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+<!--        <VBox fx:id="personList" minWidth="340" prefWidth="340" style="-fx-background-color: white;" styleClass="pane-with-border" VBox.vgrow="ALWAYS">-->
+<!--          <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />-->
+<!--        </VBox>-->
+
+        <VBox fx:id="clientList" minWidth="340" prefWidth="340" style="-fx-background-color: white;" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+          <StackPane fx:id="clientListPanelPlaceholder" VBox.vgrow="ALWAYS" />
         </VBox>
 
 <!--        \\\\\\\\\\\\ Commented out attempt at Policy list panel \\\\\\\\\\\-->

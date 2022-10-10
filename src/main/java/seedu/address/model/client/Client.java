@@ -61,15 +61,15 @@ public class Client extends Person {
             return false;
         }
 
-        Client otherclient = (Client) other;
-        return otherclient.getName().equals(getName())
-                && otherclient.getPhone().equals(getPhone())
-                && otherclient.getEmail().equals(getEmail())
-                && otherclient.getAddress().equals(getAddress())
-                && otherclient.getTags().equals(getTags())
-                && otherclient.getBirthday().equals(getBirthday())
-                && otherclient.getRiskAppetite().equals(getRiskAppetite())
-                && otherclient.getIncome().equals(getIncome());
+        Client otherClient = (Client) other;
+        return otherClient.getName().equals(getName())
+                && otherClient.getPhone().equals(getPhone())
+                && otherClient.getEmail().equals(getEmail())
+                && otherClient.getAddress().equals(getAddress())
+                && otherClient.getTags().equals(getTags())
+                && otherClient.getBirthday().equals(getBirthday())
+                && otherClient.getRiskAppetite().equals(getRiskAppetite())
+                && otherClient.getIncome().equals(getIncome());
         //TODO: Add the remaining equals!
     }
 
