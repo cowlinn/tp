@@ -22,7 +22,8 @@ public class DeleteClientCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Client: %1$s";
+    public static final String MESSAGE_DELETE_CLIENT_SUCCESS = "Deleted Client: %1$s";
+
     private final Index targetIndex;
 
     public DeleteClientCommand(Index targetIndex) {
@@ -40,6 +41,12 @@ public class DeleteClientCommand extends Command {
 
         Client clientToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteClient(clientToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, clientToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete));
+    }
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof DeleteClientCommand // instanceof handles nulls
+                && targetIndex.equals(((DeleteClientCommand) other).targetIndex)); // state check
     }
 }

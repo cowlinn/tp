@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.RiskAppetite;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -64,9 +65,10 @@ public class ClientCard extends UiPart<Region> {
         client.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        birthday.setText("Birthday :" + client.getBirthday().toString());
-        income.setText("Income : " + client.getIncome().value);
-        riskAppetite.setText("Risk Appetite : " + client.getRiskAppetite().toString());
+        birthday.setText("Birthday: " + client.getBirthday().toString());
+        income.setText("Income: " + client.getIncome().value);
+        riskAppetite.setText("Risk Appetite: " + client.getRiskAppetite().toString());
+
 
 
     }

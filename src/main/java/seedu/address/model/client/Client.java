@@ -15,7 +15,7 @@ import seedu.address.model.tag.Tag;
 
 
 /**
- * Main client class handled by person
+ * Main client class.
  */
 
 public class Client extends Person {
