@@ -29,16 +29,15 @@ Long Time No See (LTNS) is a  **desktop app for managing clients, policies and e
 3. Copy the file to the folder you want to use as the _home folder_ for your Long Time No See application.
 
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * **`listClients`** : Lists all clients.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a client named `John Doe` to the Address Book.
+   * **`addClient`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a client named `John Doe` to the Address Book.
 
-   * **`delete`**`3` : Deletes the 3rd client shown in the current list.
+   * **`deleteClient`**`3` : Deletes the 3rd client shown in the current list.
 
    * **`clear`** : Deletes all clients.
 
@@ -121,7 +120,7 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 
 Adds a client to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​ b/BIRTHDAY i/INCOME ra/RISK_APPETITE`
+Format: `addClient n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​ b/BIRTHDAY i/INCOME ra/RISK_APPETITE`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A client can have any number of tags (including 0)
@@ -137,8 +136,8 @@ The `Risk Appetite` can be classified as High, Medium or Low. They are represent
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01, b/2000-05-05, i/50000, ra/L`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal b/1920-05-06 i/1000000 ra/H`
+* `addClient n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01, b/2000-05-05, i/50000, ra/L`
+* `addClient n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal b/1920-05-06 i/1000000 ra/H`
 
 ### Listing all clients : `allClients`
 
@@ -150,7 +149,7 @@ Format: `allClients`
 
 Edits an existing client in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]… [b/BIRTHDAY] [i/INCOME] [r/RISK_APPETITE] ​`
+Format: `editClient INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]… [b/BIRTHDAY] [i/INCOME] [r/RISK_APPETITE] ​`
 
 * Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed client list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -160,9 +159,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]… [b/BIRTH
     specifying any tags after it. 
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st client to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd client to be `Betsy Crower` and clears all existing tags.
-*  `edit 3 b/2000-01-01` Edits the birthday of the 3rd client to be the 1st January 2000.
+*  `editClient 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st client to be `91234567` and `johndoe@example.com` respectively.
+*  `editClient 2 n/Betsy Crower t/` Edits the name of the 2nd client to be `Betsy Crower` and clears all existing tags.
+*  `editClient 3 b/2000-01-01` Edits the birthday of the 3rd client to be the 1st January 2000.
 
 ### Search for clients: `findClient`
 
@@ -198,15 +197,15 @@ Examples:
 
 Deletes the specified client from the address book.
 
-Format: `delete INDEX`
+Format: `deleteClient INDEX`
 
 * Deletes the client at the specified `INDEX`.
 * The index refers to the index number shown in the displayed client list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `listClients` followed by `delete 2` deletes the 2nd client in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st Client in the results of the `find` command.
+* `listClients` followed by `deleteClient 2` deletes the 2nd client in the address book.
+* `find Betsy` followed by `deleteClient 1` deletes the 1st Client in the results of the `find` command.
 
 ### Sorting all Clients : `sort`
 
@@ -351,11 +350,11 @@ If you have successfully sealed a deal with a client, you can keep track of this
 
 If you have yet to add either your Client or Policy to the Application, you can refer to the [Adding a Client](#adding-a-client-add) or [Adding a Policy](#adding-a-policy) guides.
 
-Format: `assign INDEXOFCLIENT INDEXOFPOLICY pr/PREMIUM sd/STARTDATE ed/ENDDATE
+Format: `assign INDEXOFCLIENT INDEXOFPOLICY pr/PREMIUM sd/STARTDATE ed/ENDDATE`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The start and end dates should be of the format "YYYY-MM-DD", and within the years 1900 - 2100.
-</div>`
+</div>
 
 Example Usage:
 
@@ -367,7 +366,7 @@ first client in the list from Step 2, with the following details:
   2. Start date of 10th October 2010
   3. End date of 12th October 2021
 
-###Listing out policies assigned to a client:`listAssigned`
+### Listing out policies assigned to a client:`listAssigned`
 
 If you'd like to recall which policies a client has taken up this command lists out, in the command box, the policies 
 that have been assigned to a specific client.
@@ -379,7 +378,7 @@ Example Usage:
 1. `findClient n/John Doe` to filter the list of clients to find `John Doe`.
 2. `listAssigned INDEXOFCLIENT` to list out the policies assigned to the first client in the list from Step 1.
 
-###Deleting assigned policies from a client: `deleteAssigned`
+### Deleting assigned policies from a client: `deleteAssigned`
 
 Unfortunate, but it happens. If a client cancels their policy prematurely, reflect the deletion of their assigned policy
 in the address book using this command.
@@ -391,17 +390,6 @@ Example Usage:
 2. `deleteAssigned 1 1` to delete the first assigned policy in the assigned policy list from Step 1, of the first client obtained from filtering the client list.
 
 This allows you to sort your clients in the address book based on a specified metric.
-
-### Adding an Event : `addEvent`
-* Format: `addEvent desc/EVENT_DESCRIPTION n/CLIENT_NAME d/EVENT_DATE s/START_TIME e/END_TIME`
-* Description: Adds an event into the address book. Note the following restrictions 
-  * `START_TIME` must before `END_TIME`. All times are in the format: `HH:MM`.
-  * `EVENT_DATE` follows a standard date format for our app (i.e: `YYYY-MM-DD`).
-  * `CLIENT_NAME` indicates the name of a valid client within the address book. All Events must be tagged to a single client.
-    * If you have not added this Client to your Client Book, you can refer to the [Adding a Client](#adding-a-client-add) guide to add your Client first.
-* Example Usage: `addEvent desc/CS101 Consultation n/Ben Leong date/2023-01-01 st/12:00 et/13:00`
-* Example Result: add an event with `Ben Leong` from `12:00` to `13:00` for the `1st January 2023` for a CS101 consultation,
-
 
 ### Tracking your Income  : `viewIncome`
 
@@ -416,17 +404,24 @@ Examples:
 * `viewIncome 2000` will display the expected income for years 2000, 2001 and 2002
 * `viewIncome 1899` will not be allowed since 1899 is not between 1900 and 2200
 
-<img src=".\images\viewIncome.png">
+![result for 'viewIncome 2000'](images/viewIncome.png)
 
 (Result after typing the command `viewIncome 2000`, which displays three year expected income starting from year 2000)
 
-## Event Features 
+## Event Features
 
-### Adding an Event 
+### Adding an Event : `addEvent`
+* Format: `addEvent desc/EVENT_DESCRIPTION n/CLIENT_NAME d/EVENT_DATE s/START_TIME e/END_TIME`
+* Description: Adds an event into the address book. Note the following restrictions
+    * `START_TIME` must before `END_TIME`. All times are in the format: `HH:MM`.
+    * `EVENT_DATE` follows a standard date format for our app (i.e: `YYYY-MM-DD`).
+    * `CLIENT_NAME` indicates the name of a valid client within the address book. All Events must be tagged to a single client.
+        * If you have not added this Client to your Client Book, you can refer to the [Adding a Client](#adding-a-client-add) guide to add your Client first.
+* Example Usage: `addEvent desc/CS101 Consultation n/Ben Leong date/2023-01-01 st/12:00 et/13:00`
+* Example Result: add an event with `Ben Leong` from `12:00` to `13:00` for the `1st January 2023` for a CS101 consultation,
 
 ### Deleting an Event : `deleteEvent`
 Deletes the specified Event from the address book.
-
 
 ### Deleting an Event
 
@@ -475,8 +470,6 @@ This allows you to view all Events that you have in the next 7 days, allowing yo
 
 Format: `calendar`
 
-### 
-
 ## FAQ
 
 <details>
@@ -509,49 +502,44 @@ Format: `calendar`
 
 ## Command summary
 
-<details>
-<summary>Gemeral Commands</summary>
-<br>
+General Commands
 
 | Action                      | Format, Examples                                                                                                                                                                                              |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Clear pre-existing data** | `clear`                                                                                                                                                                                                       |                                                                                                                                                                                                      |
+| **Clear pre-existing data** | `clear`                                                                                                                                                                                                       |                                                                                                                                                                                                      
 | **Help**                    | `help`                                                                                                                                                                                                        |
 | **Exit application**        | `exit`                                                                                                                                                                                                        |
-</details>
-<br>
-<details>
-<summary>Commands For Contacts</summary>
-<br>
 
-| Action             | Format, Examples                                                                                                                                                                                              |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Find Contact**   | `findContact [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [b/BIRTHDAY] [i/INCOME] [ra/RISK_APPETITE] [ti/POLICY_TITLE] [cov/POLICY_COVERAGE]…​ [cmp/POLICY_COMPANY]` <br> e.g: ` find n/Jim p/98765432` |
-| **Add Contact**    | `addContact [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`  <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                         |
-| **Delete Contact** | `delete [INDEX]` <br> e.g., `delete 3`                                                                                                                                                                        |
-| **Edit Contact**   | `editContact [INDEX] [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` <br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                         |
-| **View Contacts**  | `contacts`                                                                                                                                                                                                    |
-</details>
-<br>
-<details>
-<summary>Commands For Policy</summary>
-<br>
 
-| Action                     | Format, Examples                                                                                                                                                                                              |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Find Policy**            | `findPolicy [ti/POLICY_TITLE] [cov/POLICY_COVERAGE]…​ [cmp/POLICY_COMPANY]` <br/> e.g: `findPolicy cov/LIFE`                                                                                                  |
-| **Add Policy**             | `addPolicy [ti/POLICY_TITLE] [cmp/POLICY_COMPANY] [cms/POLICY_COMMISSION] [cov/POLICY_COVERAGE]` <br> e.g.: `addPolicy ti/Health cmp/MNF cms/4% 3% 2% cov/LIFE`                                               |                                                                                                                         |
-| **Delete Policy**          | `deletePolicy [INDEX of POLICY]<br> e.g. `deletePolicy 1`                                                                                                                                                     |                                                                                                                                                                                             |
-| **View policies**          | `policies`                                                                                                                                                                                                    |
-| **View assigned policies** | `assign [INDEX of CONTACT] [INDEX of POLICY] [pr/PREMIUM_PAID] [sd/START_DATE] [ed/END_DATE]` <br>  `assignPolicy 1 1 pr/10000 sd/2000-01-02 ed/2000-02-01`                                                   |
-| **Delete Assigned**        | `deleteAssigned [INDEX of CONTACT] [INDEX of POLICY]` <br> e.g. `deleteAssigned 1 1`                                                                                                                          |                                                                                                                                                                                                               |
-| **List Assigned**          | `listAssigned`                                                                                                                                                                                                |
-| **View Income**            | `viewIncome [YEAR]`                                                                                                                                                                                           |                                                                                                                                                                                                               |
-</details>
-<br>
-<details>
-<summary>Commands For Events</summary>
-<br>
+Commands For Contacts
+
+| Action                    | Format, Examples                                                                                                                                                                                                              |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Find Client**           | `findClient [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [b/BIRTHDAY] [i/INCOME] [ra/RISK_APPETITE] [ti/POLICY_TITLE] [cov/POLICY_COVERAGE]…​ [cmp/POLICY_COMPANY]` <br> e.g: ` find n/Jim p/98765432`            |       
+| **Add Client**            | `addClient [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`  <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                       |   
+| **Delete Client**         | `deleteClient [INDEX]` <br> e.g., `delete 3`                                                                                                                                                                                  |
+| **Edit Client**           | `editClient [INDEX] [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` <br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                       |   
+| **View Clients**          | `allClients`                                                                                                                                                                                                                  |
+| **View Filtered Clients** | `clients`                                                                                                                                                                                                                     |
+
+Note: `allClients` shows all existing clients inside LTNS, while `clients` show all clients based on filter matrices placed previously.
+
+
+Commands For Policy
+
+| Action                     | Format, Examples                                                                                                                                                |
+|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Find Policy**            | `findPolicy [ti/POLICY_TITLE] [cov/POLICY_COVERAGE]…​ [cmp/POLICY_COMPANY]` <br/> e.g: `findPolicy cov/LIFE`                                                    |        
+| **Add Policy**             | `addPolicy [ti/POLICY_TITLE] [cmp/POLICY_COMPANY] [cms/POLICY_COMMISSION] [cov/POLICY_COVERAGE]` <br> e.g.: `addPolicy ti/Health cmp/MNF cms/4% 3% 2% cov/LIFE` |                                                                                                                         
+| **Delete Policy**          | `deletePolicy [INDEX of POLICY]<br> e.g. `deletePolicy 1`                                                                                                       |                                                                                                                                                                                             
+| **View policies**          | `policies`                                                                                                                                                      |
+| **View assigned policies** | `assign [INDEX of CONTACT] [INDEX of POLICY] [pr/PREMIUM_PAID] [sd/START_DATE] [ed/END_DATE]` <br>  `assignPolicy 1 1 pr/10000 sd/2000-01-02 ed/2000-02-01`     |
+| **Delete Assigned**        | `deleteAssigned [INDEX of CONTACT] [INDEX of POLICY]` <br> e.g. `deleteAssigned 1 1`                                                                            |                                                                                                                                                                                                               
+| **List Assigned**          | `listAssigned`                                                                                                                                                  |
+| **View Income**            | `viewIncome [YEAR]`                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
+
+
+Commands For Events
 
 | Action            | Format, Examples                                                                                                                                                                                              |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -560,18 +548,18 @@ Format: `calendar`
 | **Delete Event**  | `deleteEvent [INDEX]` <br> e.g.: `deleteEvent 1`                                                                                                                                                              |
 | **View events**   | `events`                                                                                                                                                                                                      |
 | **View calendar** | `calendar`                                                                                                                                                                                                    |
-</details>
-<br>
-<details>
-<summary>Miscellaneous Commands</summary>
-<br>
+|                   |                                                                                                                                                                                                               |
+
+
+Miscellaneous Commands
 
 | Action          | Format, Examples                                                                                                                                                                                              |
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Sort**        | `sort [COMPARABLE_METRIC]` <br> `e.g.: sort AGE`                                                                                                                                                              |
 | **Pin**         | `pin [n/NAME]` <br> e.g: `pin n/Jim`                                                                                                                                                                          |
 | **View Pinned** | ` viewPin ` <br> e.g: `viewPin`                                                                                                                                                                               |
-</details>
+
+
 <br>    
 <br>
 <br>
